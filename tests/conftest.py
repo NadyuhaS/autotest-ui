@@ -1,6 +1,11 @@
 import pytest  # Импортируем pytest
 from playwright.sync_api import sync_playwright,expect, Page,Playwright  # Имопртируем класс страницы, будем использовать его для аннотации типов
+from pytest_playwright.pytest_playwright import context
 
+pytest_plugins = (
+    "fixtures.pages", # Подключаем фикстуры страниц
+    "fixtures.browsers" # Подключали ранее в предыдущих уроках
+)
 
 @pytest.fixture(scope='session')
 def initialize_browser_state(playwright: Playwright):
